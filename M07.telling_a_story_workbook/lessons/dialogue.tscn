@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bddwfljeh2thd"]
+[gd_scene load_steps=11 format=3 uid="uid://bddwfljeh2thd"]
 
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_1cblk"]
 [ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_5dtme"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="3_5dtme"]
 [ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="5_6cfwb"]
 [ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_blue.tres" id="6_nggfo"]
+[ext_resource type="StyleBox" uid="uid://5ystst32lykk" path="res://lessons/button_purple.tres" id="7_nggfo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cfwb"]
 shader = ExtResource("1_1cblk")
@@ -14,12 +15,18 @@ shader_parameter/bg_color = Color(0.535241, 0.6152957, 0.95678335, 1)
 shader_parameter/pattern_color = Color(0.2125194, 0.3173779, 0.6749083, 1)
 shader_parameter/pattern_size = 256.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cfwb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nggfo"]
 content_margin_left = 22.0
 content_margin_top = 15.0
 content_margin_right = 22.0
 content_margin_bottom = 18.0
-bg_color = Color(0.07058824, 0.38039216, 0.96862745, 0.7372549)
+bg_color = Color(0, 0, 0, 0.7372549)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 48
 corner_radius_top_right = 48
 corner_radius_bottom_right = 48
@@ -27,10 +34,10 @@ corner_radius_bottom_left = 48
 
 [sub_resource type="Theme" id="Theme_rduj4"]
 Button/styles/disabled = ExtResource("6_nggfo")
-Button/styles/focus = ExtResource("6_nggfo")
-Button/styles/hover = ExtResource("6_nggfo")
+Button/styles/focus = SubResource("StyleBoxFlat_nggfo")
+Button/styles/hover = ExtResource("7_nggfo")
 Button/styles/normal = ExtResource("6_nggfo")
-Button/styles/pressed = SubResource("StyleBoxFlat_6cfwb")
+Button/styles/pressed = ExtResource("7_nggfo")
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
