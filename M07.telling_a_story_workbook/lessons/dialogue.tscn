@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bddwfljeh2thd"]
+[gd_scene load_steps=13 format=3 uid="uid://bddwfljeh2thd"]
 
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_1cblk"]
 [ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_5dtme"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="5_6cfwb"]
 [ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_blue.tres" id="6_nggfo"]
 [ext_resource type="StyleBox" uid="uid://5ystst32lykk" path="res://lessons/button_purple.tres" id="7_nggfo"]
+[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="9_xlxck"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cfwb"]
 shader = ExtResource("1_1cblk")
@@ -112,3 +113,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_rduj4")
 text = "next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_xlxck")
