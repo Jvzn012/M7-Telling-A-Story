@@ -1,14 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5hks0yvn11s4"]
+[gd_scene load_steps=8 format=3 uid="uid://c5hks0yvn11s4"]
 
 [ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_2l66d"]
-[ext_resource type="Script" uid="uid://dhsjgposivl1e" path="res://lessons/dialogue.gd" id="2_8poul"]
+[ext_resource type="Script" uid="uid://057m1a3ct0n5" path="res://lessons/expressions.gd" id="2_uassf"]
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="3_8k2r0"]
 [ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="4_mv62c"]
-[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="5_21o7j"]
-[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="6_q184j"]
-[ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_blue.tres" id="7_856fr"]
-[ext_resource type="StyleBox" uid="uid://5ystst32lykk" path="res://lessons/button_purple.tres" id="8_g3ccb"]
-[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="9_a50pg"]
+[ext_resource type="Texture2D" uid="uid://vb24hfgkeyti" path="res://assets/pink.png" id="5_offqj"]
+[ext_resource type="Texture2D" uid="uid://dchimpdsnda13" path="res://assets/emotion_happy.png" id="6_13kob"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cfwb"]
 shader = ExtResource("3_8k2r0")
@@ -17,31 +14,7 @@ shader_parameter/bg_color = Color(0.535241, 0.6152957, 0.95678335, 1)
 shader_parameter/pattern_color = Color(0.2125194, 0.3173779, 0.6749083, 1)
 shader_parameter/pattern_size = 256.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nggfo"]
-content_margin_left = 22.0
-content_margin_top = 15.0
-content_margin_right = 22.0
-content_margin_bottom = 18.0
-bg_color = Color(0, 0, 0, 0.7372549)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-
-[sub_resource type="Theme" id="Theme_rduj4"]
-Button/styles/disabled = ExtResource("7_856fr")
-Button/styles/focus = SubResource("StyleBoxFlat_nggfo")
-Button/styles/hover = ExtResource("8_g3ccb")
-Button/styles/normal = ExtResource("7_856fr")
-Button/styles/pressed = ExtResource("8_g3ccb")
-
-[node name="Dialogue" type="Control"]
+[node name="Expressions" type="Control"]
 layout_mode = 3
 anchor_left = 0.5
 anchor_right = 1.0
@@ -50,7 +23,7 @@ offset_left = -960.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2l66d")
-script = ExtResource("2_8poul")
+script = ExtResource("2_uassf")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6cfwb")
@@ -62,58 +35,39 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Body" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0050000004
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 0.39999962
-offset_top = 272.0
-offset_right = -238.0
-offset_bottom = 1.0
-texture = ExtResource("5_21o7j")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_q184j")
+texture = ExtResource("5_offqj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Expression" type="TextureRect" parent="Body"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 849.0
-offset_top = 534.0
-offset_right = -554.0
-offset_bottom = -415.0
-text = "HELLO WORLD!"
-fit_content = true
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_13kob")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="NextButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.94200003
-anchor_top = 0.93100005
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 68.359985
-offset_top = 43.51996
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_rduj4")
-text = "next"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_group_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="RowBodies" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
-stream = ExtResource("9_a50pg")
+layout_mode = 2
+
+[node name="RowExpressions" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
