@@ -20,7 +20,7 @@ var bodies := {
 var dialogue_items :Array[Dictionary] = [
 	{
 		"expression": expressions["regular"],
-		"text": "Let's go out later...",
+		"text": "[wave]Let's go out later[/wave]",
 		"character": bodies["sophia"]
 	},
 	{
@@ -35,7 +35,7 @@ var dialogue_items :Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["sad"],
-		"text": "... but wait it's raining",
+		"text": "... bru [shake]it's raining[/shake]",
 		"character": bodies["sophia"]
 	},
 	{
@@ -50,12 +50,22 @@ var dialogue_items :Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["regular"],
-		"text": "ocean ave?",
+		"text": "hurry pick",
+		"character": bodies["pink"],
+	},
+	{
+		"expression": expressions["sad"],
+		"text": "[shake]i don't know!![/shake]",
+		"character": bodies["sophia"],
+	},
+	{
+		"expression": expressions["regular"],
+		"text": "okay what about ocean?",
 		"character": bodies["pink"],
 	},
 	{
 		"expression": expressions["happy"],
-		"text": "sure!",
+		"text": "okay sure!",
 		"character": bodies["sophia"]
 	},
 	{
@@ -88,6 +98,11 @@ func show_text() -> void:
 	tween.finished.connect(audio_stream_player.stop)
 	
 	slide_in()
+	
+	next_button.disabled = true
+	tween.finished.connect(func() -> void:
+		next_button.disabled = false
+	)
 	
 func advance() -> void:
 	current_item_index += 1
