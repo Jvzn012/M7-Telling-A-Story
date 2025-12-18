@@ -12,26 +12,56 @@ var expressions := {
 	"sad": preload ("res://assets/emotion_sad.png"),
 }
 
+var bodies := {
+	"sophia": preload ("res://assets//sophia.png"),
+	"pink": preload ("res://assets//pink.png")
+}
+
 var dialogue_items :Array[Dictionary] = [
 	{
 		"expression": expressions["regular"],
 		"text": "Let's go out later...",
-	},
-	{
-		"expression": expressions["sad"],
-		"text": "... wait it's raining",
-	},
-	{
-		"expression": expressions["happy"],
-		"text": "Let's see if we can go anywhere near!",
+		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["regular"],
-		"text": "How about here?",
+		"text": "Okay where?",
+		"character": bodies["pink"],
+	},
+	{
+		"expression": expressions["regular"],
+		"text": "I'm fine with wherever",
+		"character": bodies["pink"],
+	},
+	{
+		"expression": expressions["sad"],
+		"text": "... but wait it's raining",
+		"character": bodies["sophia"]
+	},
+	{
+		"expression": expressions["happy"],
+		"text": "It's okay Let's go somewhere near!",
+		"character": bodies["pink"]
+	},
+	{
+		"expression": expressions["regular"],
+		"text": "okay let's think...",
+		"character": bodies["sophia"],
+	},
+	{
+		"expression": expressions["regular"],
+		"text": "ocean ave?",
+		"character": bodies["pink"],
+	},
+	{
+		"expression": expressions["happy"],
+		"text": "sure!",
+		"character": bodies["sophia"]
 	},
 	{
 		"expression": expressions["happy"],
 		"text": "Okay!",
+		"character": bodies["pink"]
 	},
 	]
 	
@@ -45,10 +75,11 @@ func show_text() -> void:
 	var current_item := dialogue_items[current_item_index]
 	rich_text_label.text =current_item["text"]
 	expression.texture = current_item["expression"]
-	rich_text_label.visible_ratio = 0.0
+	body.texture = current_item["character"]
 	
+	rich_text_label.visible_ratio = 0.0
 	var tween := create_tween()
-	var text_appearing_duration := 1.2
+	var text_appearing_duration: float = current_item["text"].length()/ 30.0
 	tween.tween_property(rich_text_label, "visible_ratio", 1.0, text_appearing_duration)
 	
 	var sound_max_offset := audio_stream_player.stream.get_length()-text_appearing_duration
